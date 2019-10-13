@@ -1,0 +1,432 @@
+@font-face {
+    font-family: "HB Sketch";
+    src: url("../fonts/HB_Sketch.otf") format("opentype");
+}
+* {
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: white;
+    font-size: 1.6rem;
+}
+
+h1 {
+    font-size: 5rem;
+    font-family: "Trebuchet MS";
+}
+h2 {
+    font-size: 4rem;
+}
+h3 {
+    font-size: 3rem;
+    font-family: "Bookman Old Style";
+}
+#header_holder {
+    width: 100%;
+    background: #222;
+    /*z-index: 100;*/
+}
+
+header {
+    position: relative;
+    padding: 1px;
+    width: 100%;
+    margin: auto;
+    color: cornsilk;
+}
+
+#colorBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, deeppink 0%, deeppink 15%, #3bb9ff 15%, #3bb9ff 25%, #62C506 25%, #62C506 40%, orange 40%, orange 55%, #3bb9ff 55%, #3bb9ff 70%, #ff0dd0 70%, #ff0dd0 100%);
+    width: 100%;
+    height: 1em;
+}
+#colorBarFooter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, deeppink 0%, deeppink 15%, #3bb9ff 15%, #3bb9ff 25%, #62C506 25%, #62C506 40%, orange 40%, orange 55%, #3bb9ff 55%, #3bb9ff 70%, #ff0dd0 70%, #ff0dd0 100%);
+    width: 100%;
+    height: 1em;
+}
+footer {
+    position: relative;
+    padding-top: 1em;
+    background-color: #222;
+    color: white;
+    font-size: 1rem;
+    font-family: "HB Sketch";
+    text-align: center;
+}
+footer p {
+    padding: 1%;
+    color: white;
+}
+.userName {
+    color: white;
+}
+/*
+body {
+    background: #222;
+}
+*/
+
+.rainbow-wordmark {
+    position: relative;
+    margin: 100px auto;
+    max-width: 1000px;
+}
+
+.rainbow-wordmark__canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 110%; /* canvas is 1100px, img is 1000 */
+}
+
+.rainbow-wordmark__image {
+    margin-top: -100px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+#addPost {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 2%;
+    z-index: 1000;
+}
+#addPost i {
+    font-size: 2.5rem;
+    color: whitesmoke;
+    border: 1px solid white;
+    border-radius: 100%;
+    padding: 1rem;
+}
+#addPost i:hover {
+    color: gold;
+    border: 1px solid gold;
+}
+#addPost a {
+    display: initial;
+}
+/* IMAGE GRID PART */
+
+.posts {
+    position: relative;
+    background: linear-gradient(to right, red, purple);
+    padding: 3px;
+    margin-bottom: 2%;
+}
+.backView {
+    position: relative;
+    background: linear-gradient(to right, deeppink, deepskyblue);
+    padding: 3px;
+}
+#content {
+    background: #222;
+    width: 100%;
+    padding: 3% 0;
+}
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content : space-around;
+}
+.row-panel {
+    min-height: 35rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    color: #414a4c;
+}
+.row-panel > *{
+    flex: 100%;
+    text-align: center;
+}
+#menu {
+    width: 100%;
+    background: #dfdfdf;
+}
+#postInfo {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    padding: 3%;
+}
+#infoView {
+    margin: 2%;
+    text-align: end;
+}
+/* PANEL */
+#panelBody {
+    border: 1px red;
+    flex: 90%;
+    max-width: 90%;
+    margin: 5rem;
+}
+/* TABLE */
+
+#manager {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+}
+#manager img {
+    width: auto;
+    height: 300px;
+}
+#manager span {
+    display:block;
+}
+#manager td, #manager th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#manager tr { color: whitesmoke;}
+
+/*#manager tr:nth-child(even){background-color: #f2f2f2;}*/
+
+#manager tr:hover {
+    background-color: floralwhite;
+    color: #AA3333;
+}
+
+#manager th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: silver;
+    color: #222;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 0.5%;
+    margin: 1.5% auto 1.5%;
+}
+.col3 {
+    flex: 33%;
+}
+.columnView {
+    flex: 45%;
+    max-width: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%
+}
+.column img, .column iframe {
+    vertical-align: middle;
+    width: 100%;
+}
+.column iframe {
+    height: 315px;
+}
+
+#useless {
+    display: none;
+}
+#postContent img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+#postContent iframe {
+    width : 100%;
+    height: 400px;
+}
+/*
+iframe {
+    width: 100%;
+    height: 400px;
+}
+*/
+.comments {
+    margin: 1% 0 1% 0;
+    padding: 1em;
+}
+#author {
+    font-weight: bold;
+    color: black;
+}
+p {
+    color: #414a4c;
+}
+/* CATEGORY FILTER*/
+
+#catList, #taskList {
+    padding: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "HB Sketch";
+    justify-content: space-around;
+}
+#catList li {
+    flex: 22%;
+    max-width: 22%;
+    position: relative;
+    margin: 1rem 0;
+}
+#taskList li {
+    flex: 25%;
+    max-width: 25%;
+    margin: 1rem 0;
+}
+.catBtn, .taskBtn {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem 0;
+    background: transparent;
+    transition: all 0.8s ease-out;
+    font-size: 2rem;
+    position: relative;
+    z-index:1000;
+    cursor:pointer;
+    overflow: hidden;
+    border:rgba(255,255,255,.3) 1px solid;
+    color: white;
+}
+
+#uniqueLink {
+    display: block;
+    width: 80%;
+    color: #222;
+    border-radius: 15px;
+    border:rgba(000,000,000,.3) 1px solid;
+    padding: 1.5rem 0;
+    margin: 0 auto 3rem;
+    background: transparent;
+    transition: all 0.8s;
+    font-size: 2rem;
+}
+#uniqueLink:hover {
+    background: #222;
+    color: white;
+}
+
+.catBtn:hover, .taskBtn:hover {
+    background: gold;
+    color: black;
+}
+.selected {
+    color: black;
+    background: linear-gradient(to right, gold, yellow);
+}
+/* END CAT FILTER */
+
+/* LOADER */
+#loader {
+    text-align: center;
+    padding: 3em;
+}
+#loader button {
+    background: transparent;
+    border: none;
+    position: relative;
+}
+#loader button i {
+    position: absolute;
+    font-size: 5rem;
+    color: white;
+    left: -2.5rem;
+}
+#loader button i:hover {
+    color: gold;
+}
+#spinLoad {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* FIN LOADER */
+
+.authorCom {
+    text-align: right;
+}
+.module{
+    position: relative;
+    margin : 2% auto;
+    width: 50%;
+    border-radius:5px;
+    background:RGBA(255,255,255,1);
+    -webkit-box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+    box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+    .col3 {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .module {
+        min-width: 90%;
+        padding: 60px auto;
+        margin: 50px auto 270px;
+    }
+    .form {
+        width: 90%;
+    }
+    .rainbow-wordmark {
+        margin: 50px auto;
+        max-width: 400px;
+    }
+    .rainbow-wordmark__image {
+        margin-top: -50px;
+    }
+    .columnView{
+        flex: 100%;
+        max-width: 95%;
+    }
+    #catList li, #taskList li {
+        flex: 40%;
+        max-width: 40%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .rainbow-wordmark {
+        margin: 50px auto;
+        max-width: 200px;
+    }
+    .rainbow-wordmark__image {
+        margin-top: -10px;
+    }
+    #catList li, #taskList li {
+        flex: 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Scroll.io{% endblock %}</title>
+
+    {% block stylesheets %}
+        <!--<link rel="stylesheet" href="css/reset.css">-->
+        <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    {% endblock %}
+    <script src="{{ asset('/js/Post.class.js') }}"></script>
+</head>
+
+<body>
+    <div class="mainContainer">
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <div id="addPost">
+                <a href="{{ path('add_form', { 'type' : 'photo' })}}">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+                <a href="{{ path('app_logout') }}">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        {% else %}
+            <div id="addPost">
+                <a href="{{ path('app_login') }}">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            </div>
+        {% endif %}
+        <header id='header_holder'>
+            <header>
+                <a href="{{ path('post_index') }}">
+                <h1 class="rainbow-wordmark">
+                    <canvas class="rainbow-wordmark__canvas" width="1100" height="400"></canvas>
+                    <img class="rainbow-wordmark__image" src="{{ asset('img/title.png') }}" alt="Scroll.io" />
+                </h1>
+                </a>
+                <div id='colorBar'></div>
+            </header>
+        </div>
+
+        <main>
+            <div id="content">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </main>
+
+        <footer>
+            <div id='colorBarFooter'></div>
+            <p>Sofien Billot © {{ 'now'|date('Y') }} </p>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('post_x_panel') }}">
+                    X-Panel
+                </a>
+            {% endif %}
+        </footer>
+    </div>
+    <div id="useless" data-header="{{ asset('img/title.png') }}"></div>
+{% block javascripts %}
+    <script src="{{ asset('/js/main.js') }}"></script>
+    <script src="{{ asset('/js/layout.js') }}"></script>
+{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "panel/index.html.twig" %}
+
+{% block panel_head %}
+    {{ parent() }}
+    <h2>Users management</h2>
+{% endblock %}
+{% block title %}
+    Admin panel - {{ parent() }}
+{% endblock %}
+{% block panel_body %}
+    <section id="panelBody">
+        <table id="manager">
+            <tr>
+                <th>ID</th>
+                <th>Nickname</th>
+                <th>Mail</th>
+                <th>Role</th>
+                <th>Action :</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nickname }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% for role in user.roles %}
+                    <span>{{ role }}</span>
+                    {% endfor %}
+                </td>
+                <td><a class="deleteBtn" href="{{ path('post_x_panel_delete', {'type' : 'user', 'id' : user.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% set cursor = 1 %}
+    {% for post in newPosts %}
+        <script>
+            var path = "{{ path('post_view', { 'id': post.id }) }}";
+            var id = "{{ post.id }}";
+            var content = "{{ post.content }}";
+            var category = "{{ post.category }}";
+        </script>
+        {% if post.type == "video" %}
+            <script>
+                var type = "video";
+                var datPost = new Post(type,path,id,content, category);
+                datPost.fetchTwig();
+                //document.querySelector("#toRemove").append(datPost.a);
+                //var newPost = $("<a/>").attr("href", "{{ path('post_view', { 'id': post.id }) }}").append("<div/>").addClass('posts {{ post.category }}').append($("<iframe/>").attr("src", "{{ post.content }}").attr("allowFullScreen", ""));
+            </script>
+        {% else %}
+            <script>
+                var type = "image";
+                var datPost = new Post(type,path,id,content, category);
+                datPost.fetchTwig();
+                //document.querySelector("#toRemove").append(datPost.a);
+                //var newPost = $("<a/>").attr("href", "{{ path('post_view', { 'id': post.id }) }}").append("<div/>").addClass('posts {{ post.category }}').append($("<img/>").attr("src", "{{ post.content }}"));
+            </script>
+        {% endif %}
+
+        {% if cursor == 1 %}
+            <script>
+                document.querySelector(".col1").append(datPost.a);
+            </script>
+            {% set cursor = 2 %}
+        {% elseif cursor == 2 %}
+            <script>
+                document.querySelector('.col2').append(datPost.a);
+            </script>
+            {% set cursor = 3 %}
+        {% elseif cursor == 3 %}
+            <script>
+                document.querySelector('.col3').append(datPost.a);
+            </script>
+            {% set cursor = 4 %}
+        {% elseif cursor == 4 %}
+            <script>
+                document.querySelector('.col4').append(datPost.a);
+            </script>
+            {% set cursor = 1 %}
+        {% endif %}
+    {% else %}
+        <p>No more posts.</p>
+        <script>
+            console.log(document.querySelector('#loader button'));
+            document.querySelector('#loader button').innerHTML = "<p>No more posts.</p>"
+        </script>
+    {% endfor %}

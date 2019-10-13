@@ -1,0 +1,64 @@
+{# templates/Post/view.html.twig #}
+
+{% extends "Post/layout.html.twig" %}
+
+{% block title %}
+    Lecture une annonce - {{ parent() }}
+{% endblock %}
+
+{% block post_body %}
+    <div class="row">
+        <div class="columnView">
+            <div class="backView">
+            <div class="moduleView">
+                <div id="postInfo">
+                    <a href="{{ app.request.uri }}"><h3>{{ post.title }}</h3></a>
+                <div id="infoView">
+                    <p>Added by <span id="author">{{ post.author }}</span> on <span id="datePost">{{ post.date|date("m/d/Y") }}</span></p>
+                    <p>Category: <a href="{{ path('post_index_cat', {'name': post.category}) }}">{{ post.category }}</a></p>
+                </div>
+                </div>
+                <div id="postContent">
+                    {% if post.type == "photo" %}
+                        {% set content = post.content %}
+                        <img src="{{ asset(content) }}">
+                    {% elseif post.type == "video" %}
+                        <iframe src="{{ post.content }}"></iframe>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="columnView">
+            <div class="moduleView">
+                {% if msg is defined %}
+                    <p>Vous avez un message : {{ msg }}</p>
+                {% endif %}
+                <h3>Add a comment</h3>
+
+                {{ form_start(form, {'attr': {'class':'form'}}) }}
+                {{ form_row(form.content, {'attr': {'class': 'textbox'}}) }}
+                <div class="btn-holder">
+                    <button type="submit" class="button btn-validate">Créer</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="moduleView">
+            {% for comment in comms %}
+                <div class="comments">
+                    <p>{{ comment.content }}</p>
+                    <p class="authorCom"><small>By {{ comment.author }} on {{ comment.date|date("m/d/Y") }} .</small></p>
+                </div>
+                <hr>
+            {% else %}
+                <div class="comments">
+                    <p>Pas (encore !) de commentaires sur cet article</p>
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

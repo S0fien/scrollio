@@ -1,0 +1,47 @@
+
+{% extends "Post/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Ajouter un post{% endblock %}
+
+{% block post_body %}
+
+    <div class="module">
+        {% if type == "video" %}
+            <a href="{{ path('add_form', { 'type' : 'photo' }) }}" id="uniqueLink">
+                <span>Add a picture/GIF</span>
+                <i class="fas fa-camera"></i>
+            </a>
+        {% else  %}
+            <a href="{{ path('add_form', { 'type' : 'video' }) }}" id="uniqueLink">
+                <span>Add a video</span>
+                <i class="fas fa-video"></i>
+            </a>
+        {% endif %}
+
+        {% if msg is defined %}
+            <p>Vous avez un message : {{ msg }}</p>
+        {% endif %}
+
+        {{ form_start(form, {'attr': {'class':'form'}}) }}
+        {{ form_row(form.title, {'attr': {'class': 'textbox'}}) }}
+        {{ form_row(form.category, {'attr': {'class': 'textbox'}}) }}
+        {% if type == "video" %}
+            {{ form_row(form.content, {'attr': {'class': 'textbox'}}) }}
+        {% else  %}
+            {{ form_row(form.imageFile, {'attr': {'class': 'textbox'}}) }}
+        {% endif %}
+
+        <div class="btn-holder">
+        <button type="submit" class="button btn-validate">Créer</button>
+        </div>
+
+
+        {{ form_end(form) }}
+
+
+    </div>
+
+
+
+
+{% endblock %}

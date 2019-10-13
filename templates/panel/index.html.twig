@@ -1,0 +1,31 @@
+{% extends "Post/layout.html.twig" %}
+
+{% block title %}
+    Admin panel - {{ parent() }}
+{% endblock %}
+
+{% block post_body %}
+    <div class="row-panel">
+        {% block panel_head %}
+            <p>Bienvenue dans <a href="{{ path('post_x_panel')}}">l'espace administration</a>, <span class="userName">{{ app.user.nickname }}</span>.</p>
+        {% endblock %}
+        {% block panel_body %}
+        <ul id="taskList">
+            <li>
+                <a href="{{ path('post_x_panel_usr') }}">
+                    <button class="taskBtn">
+                        Manage users
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('post_x_panel_pst') }}">
+                    <button class="taskBtn">
+                        Manage posts
+                    </button>
+                </a>
+            </li>
+        </ul>
+        {% endblock %}
+    </div>
+{% endblock %}

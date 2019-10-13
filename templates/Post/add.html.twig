@@ -1,0 +1,11 @@
+{% extends "Post/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Ajouter un post{% endblock %}
+
+{% block post_body %}
+
+    <h2>Ajouter une annonce</h2>
+
+    {{ render(controller("App\\Controller\\FormController:new")) }}
+
+{% endblock %}

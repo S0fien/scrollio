@@ -1,0 +1,58 @@
+{% extends "panel/index.html.twig" %}
+
+{% block panel_head %}
+    {{ parent() }}
+    <h2>Posts management</h2>
+{% endblock %}
+{% block title %}
+    Admin panel - {{ parent() }}
+{% endblock %}
+{% block panel_body %}
+    <section id="panelBody">
+
+        <h3>Waiting for confirmation :<strong> {{ posts|length }}</strong></h3>
+
+        <table id="manager">
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Content</th>
+                <th>Title</th>
+                <th>Posted on</th>
+                <th>Author</th>
+                <th>Author_Id</th>
+                <th>Category</th>
+            </tr>
+            {% for post in posts %}
+                <tr>
+                    <td>{{post.id }}</td>
+                    <td>{{ post.status }}</td>
+                    <td>
+                        {% if post.type == "photo" %}
+                            <img src="{{post.content }}">
+                        {% else %}
+                            <iframe src="{{post.content}}" allowfullscreen></iframe>
+                        {% endif %}
+                    </td>
+                    <td>{{post.title }}</td>
+                    <td>{{post.date|date}}</td>
+                    <td>{{post.author }}</td>
+                    <td>{{ post.author_id }}</td>
+                    <td>
+                        <a class="actBtn" href="{{ path('post_x_panel_delete', {'type' : 'post', 'id' : post.id}) }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a class="actBtn" href="{{ path('post_x_panel_post_confirm', {'id' : post.id})}}">
+                            <i class="far fa-check-circle"></i>
+                        </a>
+                        <a class="actBtn" href="{{ path('edit_form', {'id' : post.id})}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% else %}
+                <p>No posts here.</p>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}
